@@ -29,11 +29,11 @@ class TestStarSystem < Minitest::Test
   def test_has_planets
     assert_equal(9, @solar_system.planets.count)
   end
-  #
-  # def test_planet_names
-  #   expected_names = ["Earth", "Jupiter", "Mars", "Mercury", "Neptune", "Pluto", "Saturn", "Uranus", "Venus"]
-  #   assert_equal(expected_names, @solar_system.planet_names)
-  # end
+  
+  def test_planet_names
+    expected_names = ["Earth", "Jupiter", "Mars", "Mercury", "Neptune", "Pluto", "Saturn", "Uranus", "Venus"]
+    assert_equal(expected_names, @solar_system.planet_names)
+  end
   #
   # def test_get_planet_by_name
   #   result = @solar_system.get_planet_by_name("Mars")
