@@ -26,33 +26,25 @@ class StarSystem
   end
 
   def get_planets_with_no_moons
-    @planets.find_all do |planet|
-      planet.number_of_moons == 0
-    end
+    @planets.find_all { |planet| planet.number_of_moons == 0 }
   end
 
   def get_planets_with_more_moons(number)
-    moon_planets = []
-    @planets.find_all do |planet|
-      if planet.number_of_moons > number
-        moon_planets << planet.name
-      end   
-    end
-    return moon_planets
+    moon_planets = @planets.find_all { |planet| planet.number_of_moons > number}
+    return moon_planets.map { |planet| planet.name }
   end
 
-  def get_number_of_planets_closer_than(number)
-    close_planets = []
-    @planets.find_all do |planet|
-      if planet.distance_from_sun < number
-        close_planets << planet
-      end
-    end
-    return close_planets.size
+  def get_number_of_planets_closer_than(distance)
+    return @planets.count {|planet| planet.distance_from_sun < distance}
   end
 
   def get_total_number_of_moons
     @planets.reduce(0) {|total, planet| total + planet.number_of_moons}
+  end
+
+  def get_planet_names_sorted_by_increasing_distance_from_sun
+    planets_by_distance = @planets.sort_by { |planet| planet.distance_from_sun }
+    return planets_by_distance.map { |planet| planet.name }
   end
 
 
