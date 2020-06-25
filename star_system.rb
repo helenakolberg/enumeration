@@ -41,6 +41,16 @@ class StarSystem
     return moon_planets
   end
 
+  def get_number_of_planets_closer_than(number)
+    close_planets = []
+    @planets.find_all do |planet|
+      if planet.distance_from_sun < number
+        close_planets << planet
+      end
+    end
+    return close_planets.size
+  end
+
 
     
 end
